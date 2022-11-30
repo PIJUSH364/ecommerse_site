@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-export const useData = () => {
+export const useData = (resoureUrl) => {
   const [products, setAllProducts] = useState(null);
   useEffect(() => {
     axios
-      .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=b6d57f45c1ed674f27d2d36fd0ed479c&language=en-US&page=1`
-      )
+      .get(resoureUrl)
       .then(function (response) {
         setAllProducts(response.data.results);
       })

@@ -22,8 +22,6 @@ export const SearchBar = () => {
     });
     // searchingword if empty then then nothig to shown otherwise shown
     searchWord === '' ? setSearhData([]) : setSearhData(newFilterData);
-
-    console.log(newFilterData);
   };
   useEffect(() => {}, [searhData]);
   return (
