@@ -7,6 +7,8 @@ import { useData } from './custom_hook/useData';
 import { productStocked } from './redux_toolkit/features/productSlice';
 import { Routes, Route } from 'react-router-dom';
 import ProductDetails from './components/ProductDetails';
+import Login from './components/auth/Login';
+import SignUp from './components/auth/SignUp';
 function App() {
   const allProducts = useData();
   const dispatch = useDispatch();
@@ -24,6 +26,8 @@ function App() {
         <Route path="/" element={<AllProducts data={productsData} />}></Route>
         <Route path="cart" element={<Cart />}></Route>
         <Route path="product_details" element={<ProductDetails />}></Route>
+        <Route path="login" element={<Login />}></Route>
+        <Route path="sign_up" element={<SignUp />}></Route>
         <Route path="*" element={<h2>Sorry</h2>}></Route>
       </Routes>
     </div>

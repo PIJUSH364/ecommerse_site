@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { shownProductDetails } from '../redux_toolkit/features/productSlice';
+import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
 
 export const SearchBar = () => {
   const dispatch = useDispatch();
@@ -32,9 +34,15 @@ export const SearchBar = () => {
         value={value}
         onChange={(e) => handleFilter(e)}
       />
-      <button>Serach</button>
+      <button>
+        {value.length ? (
+          <CloseIcon onClick={() => setValue('')} />
+        ) : (
+          <SearchIcon />
+        )}
+      </button>
       {searhData
-        ? searhData.map((item, key) => {
+        ? searhData.slice(0, 3).map((item, key) => {
             return (
               <Link
                 to="product_details"

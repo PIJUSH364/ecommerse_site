@@ -1,11 +1,16 @@
-import { Box, Button, Stack } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { Box, Stack } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../redux_toolkit/features/productSlice';
 
 import CartProduct from './CartProduct';
 
 function Cart() {
+  const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.product.cartProducts);
-
+  const handleCheckOut = () => {
+    dispatch(removeFromCart([]));
+    alert('order placed succesfully');
+  };
   return (
     <Stack direction="row">
       <Box flex={1}>
@@ -20,11 +25,11 @@ function Cart() {
         <h3>total items {cartItems.length}</h3>
         <h3>total price$</h3>
         <button
-          onClick={() => alert('order Placed succesfully')}
+          onClick={handleCheckOut}
           style={{
             display: ` ${cartItems.length ? 'block' : 'none'}`,
           }}
-        >  
+        >
           Checkout
         </button>
       </Box>
