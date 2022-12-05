@@ -4,6 +4,7 @@ const initialState = {
   allProducts: [],
   cartProducts: [],
   productDetails: null,
+  totalPrice: 0,
   loading: true,
 };
 

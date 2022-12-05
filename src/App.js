@@ -9,10 +9,16 @@ import { Routes, Route } from 'react-router-dom';
 import ProductDetails from './components/ProductDetails';
 import Login from './components/auth/Login';
 import SignUp from './components/auth/SignUp';
+import data from './data/data';
+
 function App() {
-  const allProducts = useData(
-    'https://api.themoviedb.org/3/movie/popular?api_key=b6d57f45c1ed674f27d2d36fd0ed479c&language=en-US&page=1'
-  );
+  // api data fetching
+  // const allProducts = useData(
+  //   'https://api.themoviedb.org/3/movie/popular?api_key=b6d57f45c1ed674f27d2d36fd0ed479c&language=en-US&page=1'
+  // );
+
+  const allProducts = data.products;
+  console.log(allProducts);
   const dispatch = useDispatch();
   const productsData = useSelector((state) => state.product.allProducts);
 
@@ -23,6 +29,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      <img src="" alt="" />
       <Routes>
         <Route path="/" element={<AllProducts data={productsData} />}></Route>
         <Route path="cart" element={<Cart />}></Route>

@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material';
+import { Rating, Stack } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -19,6 +19,7 @@ function Product({ data }) {
       dispatch(removeFromCart(filterItems));
     }
   };
+  
   const handleAddToCart = (data) => {
     const existData = cartItems.find((item) => item.id === data.id);
     // if current item already exist cartItems then no need to addToCart
@@ -33,10 +34,13 @@ function Product({ data }) {
   }, [cartItems]);
   return (
     <Stack width="100px">
-      <h5>{data.id}</h5>
-      <img
-        src={`https://image.tmdb.org/t/p/w200${data.poster_path}`}
-        alt={data.original_title}
+      <img src={data.image} alt={data.name} />
+      <h3>${data.price}</h3>
+      <Rating
+        name="half-rating-read"
+        defaultValue={data.rating}
+        precision={0.5}
+        readOnly
       />
       {toggleFlag ? (
         <button onClick={() => handleRemoveFromCart(data)}>
